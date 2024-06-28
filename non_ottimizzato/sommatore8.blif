@@ -1,0 +1,16 @@
+.model sommatore8
+.inputs a7 a6 a5 a4 a3 a2 a1 a0 b7 b6 b5 b4 b3 b2 b1 b0 cin 
+.outputs o7 o6 o5 o4 o3 o2 o1 o0 cout
+
+.subckt sommatore i1=a0 i0=b0 cin=cin o=o0 cout=c0
+.subckt sommatore i1=a1 i0=b1 cin=c0 o=o1 cout=c1
+.subckt sommatore i1=a2 i0=b2 cin=c1 o=o2 cout=c2
+.subckt sommatore i1=a3 i0=b3 cin=c2 o=o3 cout=c3
+.subckt sommatore i1=a4 i0=b4 cin=c3 o=o4 cout=c4
+.subckt sommatore i1=a5 i0=b5 cin=c4 o=o5 cout=c5
+.subckt sommatore i1=a6 i0=b6 cin=c5 o=o6 cout=c6
+.subckt sommatore i1=a7 i0=b7 cin=c6 o=o7 cout=cout
+
+.end 
+.search sommatore.blif
+

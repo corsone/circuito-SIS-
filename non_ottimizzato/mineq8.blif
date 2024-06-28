@@ -1,0 +1,16 @@
+.model mineq8
+.inputs c7 c6 c5 c4 c3 c2 c1 c0 d7 d6 d5 d4 d3 d2 d1 d0 
+.outputs CleD 
+
+#Per rappresentare il minore nego il maggiore 
+#Vado quindi a richiamere il compomente maggiore con i parametri forniti
+.subckt maggiore8 a7=c7 a6=c6 a5=c5 a4=c4 a3=c3 a2=c2 a1=c1 a0=c0 b7=d7 b6=d6 b5=d5 b4=d4 b3=d3 b2=d2 b1=d1 b0=d0 AgtB=z 
+
+# nega il risultato
+.names z CleD 
+0 1 
+ 
+.end
+
+.search maggiore8.blif
+

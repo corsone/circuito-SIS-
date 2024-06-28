@@ -1,0 +1,195 @@
+.model datapath2
+.inputs inizio ph7 ph6 ph5 ph4 ph3 ph2 ph1 ph0 c_s1 c_s0
+.outputs fine ph7f ph6f ph5f ph4f ph3f ph2f ph1f ph0f clk7 clk6 clk5 clk4 clk3 \
+clk2 clk1 clk0
+.latch    c_s1 c_s1i re NIL 0
+.latch    c_s0 c_s0i re NIL 0
+.latch    op7 reg7 re NIL 0
+.latch    op6 reg6 re NIL 0
+.latch    op5 reg5 re NIL 0
+.latch    op4 reg4 re NIL 0
+.latch    op3 reg3 re NIL 0
+.latch    op2 reg2 re NIL 0
+.latch    op1 reg1 re NIL 0
+.latch    op0 reg0 re NIL 0
+.latch    start7 [1210] re NIL 0
+.latch    start6 [1211] re NIL 0
+.latch    start5 [1212] re NIL 0
+.latch    start4 [1213] re NIL 0
+.latch    start3 [1214] re NIL 0
+.latch    start2 [1215] re NIL 0
+.latch    start1 [1216] re NIL 0
+.latch    start0 [1217] re NIL 0
+.names c_s1i c_s0i op7 op6 op5 op4 op3 op2 op1 op0 fine
+-11------- 1
+1-0------- 1
+-1-111---- 1
+1--0000000 1
+.names fine op7 ph7f
+11 1
+.names fine op6 ph6f
+11 1
+.names fine op5 ph5f
+11 1
+.names fine op4 ph4f
+11 1
+.names fine op3 ph3f
+11 1
+.names fine op2 ph2f
+11 1
+.names fine op1 ph1f
+11 1
+.names fine op0 ph0f
+11 1
+.names fine clk6 [1210] [1347] clk7
+-11- 1
+1--1 1
+.names fine [1171] clk6
+11 1
+.names fine [1353] clk5
+11 1
+.names fine [1349] clk4
+11 1
+.names fine [1348] clk3
+11 1
+.names fine [1175] clk2
+11 1
+.names fine [1352] clk1
+11 1
+.names fine [1350] clk0
+11 1
+.names inizio reg3 ph3 st3
+01- 1
+1-1 1
+.names [1322] [1351] op7
+11 1
+00 1
+.names op5 [1254] [1279] [1338] [1345] op6
+-11-- 1
+100-- 1
+0-10- 1
+01--1 1
+.names op4 [1255] [1338] [1346] op5
+-00- 1
+-111 1
+01-0 1
+10-0 1
+.names st3 c3 [1256] [1338] [1345] [1346] [1354] op4
+-----00 1
+1-1-1-- 1
+-1-10-- 1
+--11--1 1
+.names st3 op2 c3 [1209] [1354] op3
+1--0- 1
+0---0 1
+110-- 1
+00-1- 1
+.names [1342] [1355] op2
+11 1
+00 1
+.names inizio ph1 reg1 op1
+11- 1
+0-1 1
+.names inizio ph0 reg0 op0
+11- 1
+0-1 1
+.names st3 [1342] c3
+11 1
+.names [1211] [1357] [1171]
+11 1
+00 1
+.names [1215] [1356] [1175]
+11 1
+00 1
+.names [1214] [1215] [1356] [1062]
+110 1
+.names inizio start6 [1210] [1347] start7
+-11- 1
+0--1 1
+.names inizio [1171] start6
+01 1
+.names inizio [1353] start5
+01 1
+.names inizio [1349] start4
+01 1
+.names inizio [1348] start3
+01 1
+.names inizio [1175] start2
+01 1
+.names inizio [1352] start1
+01 1
+.names inizio [1350] start0
+01 1
+.names c_s1i c_s0i [1355] [1209]
+--0 1
+10- 1
+.names inizio ph6 reg6 [1254]
+11- 1
+0-1 1
+.names inizio ph5 reg5 [1255]
+11- 1
+0-1 1
+.names inizio ph4 reg4 [1256]
+11- 1
+0-1 1
+.names [1254] [1255] [1338] [1354] [1279]
+-11- 1
+0--1 1
+-0-1 1
+.names [1254] [1279] [1345] [1346] [1322]
+-1-- 1
+1-1- 1
+--11 1
+.names c3 [1256] [1345] [1338]
+0-- 1
+-0- 1
+--1 1
+.names inizio ph2 reg2 [1342]
+11- 1
+0-1 1
+.names [1209] [1217] [1343]
+0- 1
+-0 1
+.names [1062] [1213] [1344]
+0- 1
+-0 1
+.names c_s0i [1209] [1345]
+0- 1
+-0 1
+.names st3 [1256] [1346]
+1- 1
+-1 1
+.names [1171] [1210] [1211] [1347]
+-10 1
+001 1
+.names [1175] [1062] [1214] [1215] [1348]
+-01- 1
+0-01 1
+.names [1062] [1213] [1349]
+01 1
+10 1
+.names [1209] [1217] [1350]
+01 1
+10 1
+.names inizio ph7 reg7 [1351]
+11- 1
+0-1 1
+.names [1216] [1343] [1352]
+11 1
+00 1
+.names [1212] [1344] [1353]
+11 1
+00 1
+.names c_s0i [1209] [1354]
+1- 1
+-0 1
+.names c_s1i c_s0i [1355]
+1- 1
+-0 1
+.names [1216] [1343] [1356]
+0- 1
+-1 1
+.names [1212] [1344] [1357]
+0- 1
+-1 1
+.end

@@ -1,0 +1,16 @@
+.model menozero50
+.outputs O7 O6 O5 O4 O3 O2 O1 O0
+
+.subckt uno1 uscita=O7
+.subckt uno1 uscita=O6
+.subckt uno1 uscita=O5
+.subckt uno1 uscita=O4
+.subckt uno1 uscita=O3
+.subckt zero1 uscita=O2
+.subckt zero1 uscita=O1
+.subckt zero1 uscita=O0
+
+.search zero1.blif
+.search uno1.blif
+.end
+

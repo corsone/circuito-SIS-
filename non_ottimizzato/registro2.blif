@@ -1,0 +1,10 @@
+.model registro2
+.inputs i1 i0
+.outputs o1 o0
+
+.subckt registro1 i=i1 o=o1
+.subckt registro1 i=i0 o=o0
+
+.end
+.search registro1.blif
+

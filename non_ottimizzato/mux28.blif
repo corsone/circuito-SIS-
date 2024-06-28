@@ -1,0 +1,16 @@
+.model mux28
+.inputs s1 s0 a7 a6 a5 a4 a3 a2 a1 a0 b7 b6 b5 b4 b3 b2 b1 b0 c7 c6 c5 c4 c3 c2 c1 c0 d7 d6 d5 d4 d3 d2 d1 d0
+.outputs o7 o6 o5 o4 o3 o2 o1 o0
+
+.subckt mux2 s1=s1 s0=s0 i3=a7 i2=b7 i1=c7 i0=d7 o=o7
+.subckt mux2 s1=s1 s0=s0 i3=a6 i2=b6 i1=c6 i0=d6 o=o6
+.subckt mux2 s1=s1 s0=s0 i3=a5 i2=b5 i1=c5 i0=d5 o=o5
+.subckt mux2 s1=s1 s0=s0 i3=a4 i2=b4 i1=c4 i0=d4 o=o4
+.subckt mux2 s1=s1 s0=s0 i3=a3 i2=b3 i1=c3 i0=d3 o=o3
+.subckt mux2 s1=s1 s0=s0 i3=a2 i2=b2 i1=c2 i0=d2 o=o2
+.subckt mux2 s1=s1 s0=s0 i3=a1 i2=b1 i1=c1 i0=d1 o=o1
+.subckt mux2 s1=s1 s0=s0 i3=a0 i2=b0 i1=c0 i0=d0 o=o0
+
+.end
+.search mux2.blif
+

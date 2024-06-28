@@ -1,0 +1,126 @@
+.model FSM3
+.inputs reset start ph7 ph6 ph5 ph4 ph3 ph2 ph1 ph0 fine
+.outputs fine_operazione errore va vb inizio c_s1 c_s0
+.latch    [542] LatchOut_v11   1
+.latch    [543] LatchOut_v12   0
+.start_kiss
+.i 11
+.o 7
+.p 34
+.s 4
+.r INIZIALE
+1---------- INIZIALE INIZIALE 0000000
+00--------- INIZIALE INIZIALE 0000000
+011111----- INIZIALE INIZIALE 0100000
+011110---1- INIZIALE INIZIALE 0100000
+011110--1-- INIZIALE INIZIALE 0100000
+011110-1--- INIZIALE INIZIALE 0100000
+0111101---- INIZIALE INIZIALE 0100000
+010000----- INIZIALE ACIDO 0001101
+010001----- INIZIALE ACIDO 0001101
+010010----- INIZIALE ACIDO 0001101
+010011----- INIZIALE ACIDO 0001101
+010100----- INIZIALE ACIDO 0001101
+010101----- INIZIALE ACIDO 0001101
+010110----- INIZIALE ACIDO 0001101
+0111100000- INIZIALE BASICO 0010110
+011101----- INIZIALE BASICO 0010110
+011100----- INIZIALE BASICO 0010110
+011011----- INIZIALE BASICO 0010110
+011010----- INIZIALE BASICO 0010110
+011001----- INIZIALE BASICO 0010110
+0110001---- INIZIALE BASICO 0010110
+011000-1--- INIZIALE BASICO 0010110
+011000--1-- INIZIALE BASICO 0010110
+011000---1- INIZIALE BASICO 0010110
+010111----- INIZIALE BASICO 0000111
+0110000000- INIZIALE BASICO 0000111
+0---------0 ACIDO ACIDO 0001001
+0---------1 ACIDO NEUTRO 1000000
+1---------- ACIDO INIZIALE 0000000
+0---------0 BASICO BASICO 0010010
+0---------1 BASICO NEUTRO 1000000
+1---------- BASICO INIZIALE 0000000
+00--------1 NEUTRO NEUTRO 1000111
+1---------- NEUTRO INIZIALE 0000000
+.end_kiss
+.latch_order LatchOut_v11 LatchOut_v12
+.code INIZIALE 10
+.code ACIDO 01
+.code BASICO 00
+.code NEUTRO 11
+.names reset start fine LatchOut_v11 errore [542]
+1---- 1
+----1 1
+-0-1- 1
+--10- 1
+.names fine_operazione vb [543]
+1- 1
+-1 1
+.names reset fine LatchOut_v11 LatchOut_v12 [571] fine_operazione
+---11 1
+010-- 1
+.names ph7 [572] [573] [577] errore
+1011 1
+.names [542] c_s0 va
+00 1
+.names reset ph7 ph4 fine LatchOut_v12 [572] [573] vb
+0--01-- 1
+-00---1 1
+-0---11 1
+.names LatchOut_v12 errore [571] [573] inizio
+1-1- 1
+-0-1 1
+.names [542] fine_operazione vb c_s0 c_s1
+0-0- 1
+-1-1 1
+.names ph7 ph6 ph5 LatchOut_v11 [542] fine_operazione vb [577] c_s0
+------1- 1
+---1-1-- 1
+0--10--- 1
+-0010--0 1
+.names reset LatchOut_v11 [571]
+01 1
+.names ph6 ph5 [572]
+0- 1
+-0 1
+.names start [571] [573]
+11 1
+.names ph4 ph3 ph2 ph1 ph0 [577]
+1---- 1
+-1--- 1
+--1-- 1
+---1- 1
+----1 1
+.exdc 
+.inputs reset start ph7 ph6 ph5 ph4 ph3 ph2 ph1 ph0 fine LatchOut_v11 \
+LatchOut_v12
+.outputs [542] [543] fine_operazione errore va vb inizio c_s1 c_s0
+.names reset start fine LatchOut_v11 LatchOut_v12 [542]
+01-11 1
+0-011 1
+.names reset start fine LatchOut_v11 LatchOut_v12 [543]
+01-11 1
+0-011 1
+.names reset start fine LatchOut_v11 LatchOut_v12 fine_operazione
+01-11 1
+0-011 1
+.names reset start fine LatchOut_v11 LatchOut_v12 errore
+01-11 1
+0-011 1
+.names reset start fine LatchOut_v11 LatchOut_v12 va
+01-11 1
+0-011 1
+.names reset start fine LatchOut_v11 LatchOut_v12 vb
+01-11 1
+0-011 1
+.names reset start fine LatchOut_v11 LatchOut_v12 inizio
+01-11 1
+0-011 1
+.names reset start fine LatchOut_v11 LatchOut_v12 c_s1
+01-11 1
+0-011 1
+.names reset start fine LatchOut_v11 LatchOut_v12 c_s0
+01-11 1
+0-011 1
+.end

@@ -1,0 +1,19 @@
+###################################################################################################################################
+#                                                           FSMD                                                                  #
+###################################################################################################################################
+
+.model FSMD
+.inputs reset start ph7 ph6 ph5 ph4 ph3 ph2 ph1 ph0 
+.outputs fine_operazione errore_sensore valvola_acido valvola_basico ph7_finale ph6_finale ph5_finale ph4_finale ph3_finale ph2_finale ph1_finale ph0_finale clk7 clk6 clk5 clk4 clk3 clk2 clk1 clk0
+
+# FSM
+.subckt FSM2 reset=reset start=start ph7=ph7 ph6=ph6 ph5=ph5 ph4=ph4 ph3=ph3 ph2=ph2 ph1=ph1 ph0=ph0 fine=fine fine_operazione=fine_operazione errore=errore_sensore va=valvola_acido vb=valvola_basico inizio=inizio c_s1=c_s1 c_s0=c_s0
+
+# DATAPATH
+.subckt datapath inizio=inizio c_s1=c_s1 c_s0=c_s0 ph7=ph7 ph6=ph6 ph5=ph5 ph4=ph4 ph3=ph3 ph2=ph2 ph1=ph1 ph0=ph0 fine=fine ph7f=ph7_finale ph6f=ph6_finale ph5f=ph5_finale ph4f=ph4_finale ph3f=ph3_finale ph2f=ph2_finale ph1f=ph1_finale ph0f=ph0_finale clk7=clk7 clk6=clk6 clk5=clk5 clk4=clk4 clk3=clk3 clk2=clk2 clk1=clk1 clk0=clk0
+
+.end
+
+.search FSM2.blif
+.search datapath.blif
+

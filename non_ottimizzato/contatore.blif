@@ -1,0 +1,36 @@
+.model contatore
+.inputs inizio fine c_s1 c_s0
+.outputs clk7 clk6 clk5 clk4 clk3 clk2 clk1 clk0
+
+# costanti zero e uno
+.subckt zero1 uscita=zero
+.subckt uno1 uscita=uno
+
+# mux iniziale per decidere se resettare il contatore con 0 o prendere il valore del cotatore
+.subckt mux8 s=inizio a7=sum7 a6=sum6 a5=sum5 a4=sum4 a3=sum3 a2=sum2 a1=sum1 a0=sum0 b7=zero b6=zero b5=zero b4=zero b3=zero b2=zero b1=zero b0=zero o7=start7 o6=start6 o5=start5 o4=start4 o3=start3 o2=start2 o1=start1 o0=start0
+
+# regisro per salvare il valore
+.subckt registro8 a7=start7 a6=start6 a5=start5 a4=start4 a3=start3 a2=start2 a1=start1 a0=start0 o7=reg7 o6=reg6 o5=reg5 o4=reg4 o3=reg3 o2=reg2 o1=reg1 o0=reg0
+
+# mux per decidere se aggiungere 1 o 0 in base al tipo di sostanza(1 per acido/basico, 0 per errore/neutro)
+.subckt mux28 s1=c_s1 s0=c_s0 a7=zero a6=zero a5=zero a4=zero a3=zero a2=zero a1=zero a0=zero b7=zero b6=zero b5=zero b4=zero b3=zero b2=zero b1=zero b0=uno c7=zero c6=zero c5=zero c4=zero c3=zero c2=zero c1=zero c0=uno d7=zero d6=zero d5=zero d4=zero d3=zero d2=zero d1=zero d0=zero o7=c7 o6=c6 o5=c5 o4=c4 o3=c3 o2=c2 o1=c1 o0=c0
+
+# sommatore per aggiungere 1 o 0 in base al tipo di sostanza(1 per acido/basico, 0 per errore/neutro)
+.subckt sommatore8 a7=reg7 a6=reg6 a5=reg5 a4=reg4 a3=reg3 a2=reg2 a1=reg1 a0=reg0 b7=c7 b6=c6 b5=c5 b4=c4 b3=c3 b2=c2 b1=c1 b0=c0 cin=zero o7=sum7 o6=sum6 o5=sum5 o4=sum4 o3=sum3 o2=sum2 o1=sum1 o0=sum0
+
+# mux per decidere quando far uscire il valore del numero di cicli di clock in base al valore di fine
+.subckt mux8 s=fine a7=zero a6=zero a5=zero a4=zero a3=zero a2=zero a1=zero a0=zero b7=sum7 b6=sum6 b5=sum5 b4=sum4 b3=sum3 b2=sum2 b1=sum1 b0=sum0 o7=clk7 o6=clk6 o5=clk5 o4=clk4 o3=clk3 o2=clk2 o1=clk1 o0=clk0
+
+
+
+
+.search uno1.blif
+.search zero1.blif
+.search mux8.blif
+.search mux28.blif
+.search sommatore8.blif
+.search registro8.blif
+
+
+.end
+

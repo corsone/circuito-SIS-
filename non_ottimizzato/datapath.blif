@@ -1,0 +1,61 @@
+###################################################################################################################################
+#                                                            datapath                                                             #
+###################################################################################################################################
+
+.model datapath
+.inputs inizio ph7 ph6 ph5 ph4 ph3 ph2 ph1 ph0 c_s1 c_s0 
+.outputs fine ph7f ph6f ph5f ph4f ph3f ph2f ph1f ph0f clk7 clk6 clk5 clk4 clk3 clk2 clk1 clk0
+
+# costanti zero e uno
+.subckt zero1 uscita=zero
+.subckt uno1 uscita=uno
+
+# registro per passare i valori di c_s1 e c_s0 dalla fsm al datapath
+.subckt registro2 i1=c_s1 i0=c_s0 o1=c_s1i o0=c_s0i
+
+# mux iniziale per decidedere se far entrare il ph iniziale o il ph modificato(in base al segnale di inizio 1=ph iniziale, 0=ph modificato)
+.subckt mux8 s=inizio a7=reg7 a6=reg6 a5=reg5 a4=reg4 a3=reg3 a2=reg2 a1=reg1 a0=reg0 b7=ph7 b6=ph6 b5=ph5 b4=ph4 b3=ph3 b2=ph2 b1=ph1 b0=ph0 o7=st7 o6=st6 o5=st5 o4=st4 o3=st3 o2=st2 o1=st1 o0=st0
+
+# sommatore per aggiungere 0,25 al ph 
+.subckt sommatore8 a7=st7 a6=st6 a5=st5 a4=st4 a3=st3 a2=st2 a1=st1 a0=st0 b7=zero b6=zero b5=zero b4=zero b3=zero b2=uno b1=zero b0=zero cin=zero o7=sum7 o6=sum6 o5=sum5 o4=sum4 o3=sum3 o2=sum2 o1=sum1 o0=sum0 
+
+# sottrattore per togliere 0,50 al ph 
+.subckt sottratore8 a7=st7 a6=st6 a5=st5 a4=st4 a3=st3 a2=st2 a1=st1 a0=st0 b7=uno b6=uno b5=uno b4=uno b3=uno b2=zero b1=zero b0=zero cin=zero o7=sub7 o6=sub6 o5=sub5 o4=sub4 o3=sub3 o2=sub2 o1=sub1 o0=sub0 
+
+# mux per decidere quale tra i due valori prendere
+.subckt mux28 s1=c_s1i s0=c_s0i a7=st7 a6=st6 a5=st5 a4=st4 a3=st3 a2=st2 a1=st1 a0=st0 b7=sub7 b6=sub6 b5=sub5 b4=sub4 b3=sub3 b2=sub2 b1=sub1 b0=sub0 c7=sum7 c6=sum6 c5=sum5 c4=sum4 c3=sum3 c2=sum2 c1=sum1 c0=sum0 d7=st7 d6=st6 d5=st5 d4=st4 d3=st3 d2=st2 d1=st1 d0=st0 o7=op7 o6=op6 o5=op5 o4=op4 o3=op3 o2=op2 o1=op1 o0=op0
+
+# registro per memorizzare il valore
+.subckt registro8 a7=op7 a6=op6 a5=op5 a4=op4 a3=op3 a2=op2 a1=op1 a0=op0 o7=reg7 o6=reg6 o5=reg5 o4=reg4 o3=reg3 o2=reg2 o1=reg1 o0=reg0
+
+# operazioni per vedere se il ph è compreso fra 7 e 8
+.subckt mineq8 c7=zero c6=uno c5=uno c4=uno c3=zero c2=zero c1=zero c0=zero d7=op7 d6=op6 d5=op5 d4=op4 d3=op3 d2=op2 d1=op1 d0=op0 CleD=resA
+.subckt maggiore8 a7=uno a6=zero a5=zero a4=zero a3=zero a2=zero a1=zero a0=uno b7=op7 b6=op6 b5=op5 b4=op4 b3=op3 b2=op2 b1=op1 b0=op0 AgtB=resB
+
+# mux per decidere quando impostare fine a 1
+.subckt mux2 s1=c_s1i s0=c_s0i i3=uno i2=resB i1=resA i0=zero o=fine 
+
+# mux per far uscire il valore del ph finale in base a quando fine viene impostata a 1, altriment fa uscire 0
+.subckt mux8 s=fine a7=zero a6=zero a5=zero a4=zero a3=zero a2=zero a1=zero a0=zero b7=op7 b6=op6 b5=op5 b4=op4 b3=op3 b2=op2 b1=op1 b0=op0 o7=ph7f o6=ph6f o5=ph5f o4=ph4f o3=ph3f o2=ph2f o1=ph1f o0=ph0f
+
+# conta il numero di cicli
+.subckt contatore inizio=inizio fine=fine c_s1=c_s1i c_s0=c_s0i clk7=clk7 clk6=clk6 clk5=clk5 clk4=clk4 clk3=clk3 clk2=clk2 clk1=clk1 clk0=clk0
+
+.search maggiore8.blif
+.search mineq8.blif
+.search mux2.blif
+.search mux8.blif
+.search mux28.blif
+.search registro8.blif
+.search registro2.blif
+.search sommatore.blif
+.search sommatore8.blif
+.search sottratore.blif
+.search uno1.blif
+.search zero1.blif
+.search contatore.blif
+.search mux.blif
+
+.end
+
+
