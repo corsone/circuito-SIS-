@@ -1,5 +1,17 @@
 This is a project for the Computer Architecture course that I completed during the first year of my Bachelor's degree in Computer Science.
 
+- [Project specifications](#project-specifications)
+- [The Overall Architecture of the Circuit](#the-overall-architecture-of-the-circuit)
+- [The State Diagram of the Controller(FSM)](#the-state-diagram-of-the-controllerfsm)
+  - [Input](#input)
+  - [Output](#output)
+  - [States](#states)
+    - [Initial State](#initial-state)
+    - [Acidic State](#acidic-state)
+    - [Basic State](#basic-state)
+- [Datapath](#datapath)
+
+
 # Project specifications
 
 The project involves the development of a sequential circuit that controls a chemical apparatus designed to adjust an initial solution with a known pH to a neutral pH. The pH value is expressed on a scale from 0 to 14. The circuit controls two dispensing valves: one for acidic solution and one for basic solution.
